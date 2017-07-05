@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AppBarExampleIcon from './HeaderBar';
 
 import './styles.css';
 
 const Layout = ({ children }) => (
     <div className="appContentWrapper">
         <div className="appHeader">
-            {/* Might want to put your header bar here... */}
+          <AppBarExampleIcon />
         </div>
         <div className="appContent">
             {children}
@@ -16,11 +17,11 @@ const Layout = ({ children }) => (
 );
 
 Layout.defaultProps = {
-    children: null
+  children: null
 };
 
 Layout.propTypes = {
-    children: PropTypes.node
+  children: PropTypes.node
 };
 
 export default Layout;
