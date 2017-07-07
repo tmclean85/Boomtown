@@ -10,9 +10,9 @@ const Layout = ({ children }) => (
           <AppBarExampleIcon />
         </div>
         <div className="appContent">
-            {children}
+          {children}
         </div>
-        {/* And a footer here, but not on the login route... */}
+        
     </div>
 );
 
