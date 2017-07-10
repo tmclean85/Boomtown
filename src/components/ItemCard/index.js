@@ -1,3 +1,3 @@
-import CardExampleWithAvatar from './ItemCard';
+import ItemCard from './ItemCard';
 
-export default CardExampleWithAvatar;
+export default ItemCard;
