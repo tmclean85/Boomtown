@@ -1,0 +1,9 @@
+.cardBox {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.cardBox img {
+  margin: 1rem 0 0 1rem;
+  border-radius: 50%;
+}
