@@ -1,15 +1,17 @@
+
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import { white } from 'material-ui/styles/colors';
+import logo from '../../images/boomtown-logo.svg';
+import './styles.css';
 
-/**
- * A simple example of `AppBar` with an icon on the right.
- * By default, the left icon is a navigation-menu.
- */
-const AppBarExampleIcon = () => (
-  <AppBar
-    title="Title"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+const HeaderBar = () => (
+  <div className="appHeader">
+    <AppBar
+      iconElementLeft={<img src={logo} alt="logo" />}
+      style={{ backgroundColor: white }}
+    />
+  </div>
 );
 
-export default AppBarExampleIcon;
+export default HeaderBar;

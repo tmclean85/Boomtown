@@ -1,3 +1,14 @@
+
+.appHeader {
+  height: 5rem;
+}
+
+.appHeader img {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: 1.5rem;
+}
+
 .appContentWrapper {
     display: flex;
     min-height: 100%;
@@ -10,4 +21,12 @@
   max-width: 1140px;
   width: 100%;
   flex:1;
+}
+
+.appFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 5rem;
 }
