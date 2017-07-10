@@ -8,7 +8,7 @@ import './styles.css';
 const HeaderBar = () => (
   <div className="appHeader">
     <AppBar
-      iconElementLeft={<img src={logo} alt="logo" />}
+      iconElementLeft={<img src={logo} alt="boomtown logo" />}
       style={{ backgroundColor: white }}
     />
   </div>
