@@ -4,7 +4,9 @@ import './styles.css';
 
 
 const Profile = () => (
-  <h1>Dem profiles tho</h1>
+  <div className="user-box">
+    <h1>mic check</h1>
+  </div>  
 );
 
 

@@ -10,9 +10,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
-  Redirect,
-  NavLink
 } from 'react-router-dom';
 
 const Routes = () => (

@@ -19,7 +19,7 @@ import Items from './containers/Items';
 import NotFound from './containers/NotFound';
 import Profile from './containers/Profile';
 import Share from './containers/Share';
-import CardExampleWithAvatar from './components/ItemCard';
+import ItemCard from './components/ItemCard';
 import Routes from './routes';
 
 injectTapEventPlugin();

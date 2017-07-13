@@ -10,7 +10,7 @@ const ItemCard = ({ itemData }) => (
   <div className="itemCardWrapper">
     <Card>
       <CardMedia
-        overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+        overlay={<CardTitle subtitle={itemData.available} />}
       >
         <img src={itemData.imageUrl} alt={itemData.title} />
       </CardMedia>
