@@ -17,4 +17,4 @@ const ItemCardList = ({ itemsData }) => (
   </Masonry>
 );
 
-export default ItemCardList
+export default ItemCardList;

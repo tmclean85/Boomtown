@@ -1,12 +1,42 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
 
 .user-box {
   display: flex;
   height: 15rem;
+  flex-flow: row nowrap;
   width: 75%;
-  justify-content: center;
+  justify-content: space-around;
   background: #FFF;
   margin-top: 2.5rem;
   box-shadow:rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
   border-radius: 2px;
 }
 
+.user-box h1 {
+  font-size: 2.5rem;
+}
+
+.user-box p {
+  color: #8A9093;
+}
+
+.username {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 40%;
+  height: 80%;
+  justify-content: center;
+}
+
+.user-meta {
+  display: flex;
+  width: 40%;
+  height: 80%;  
+}
