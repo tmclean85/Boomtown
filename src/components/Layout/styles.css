@@ -6,7 +6,14 @@
 .appHeader img {
   height: 2.5rem;
   width: 2.5rem;
-  margin-left: 1.5rem;
+  margin: 0.5rem 1rem 0.25rem 1.5rem;
+}
+
+.selectField {
+  display: flex;
+  height: 100%;
+  width: auto;
+  margin-left: 1rem;
 }
 
 .appContentWrapper {

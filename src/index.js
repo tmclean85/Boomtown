@@ -27,15 +27,15 @@ injectTapEventPlugin();
 
 const Boomtown = () => (
 
-    <MuiThemeProvider muiTheme={muiTheme}>
-        <Provider store={store} >
+  <MuiThemeProvider muiTheme={muiTheme}>
+    <Provider store={store} >
       <Router>
-          <Layout>
-            <Routes />
-          </Layout>  
-      </Router>       
-        </Provider >       
-    </MuiThemeProvider>
+        <Layout>
+          <Routes />
+        </Layout>
+      </Router>
+    </Provider >
+  </MuiThemeProvider>
 
 
 );

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Items from './Items';
 import Loader from '../../components/Loader';
-import { userAndItemData } from '../../redux/actions';
+import { fetchItemData } from '../../redux/modules/items';
 import { connect } from 'react-redux';
 
 class ItemsContainer extends Component {
 
   componentDidMount() {
-    this.props.dispatch(userAndItemData());
+    this.props.dispatch(fetchItemData());
   }
 
   render() {
@@ -22,5 +22,7 @@ function mapStateToProps(state) {
     itemsData: state.items.itemsData
   };
 }
+
+// TODO: Prop-type validation
 
 export default connect(mapStateToProps)(ItemsContainer);
