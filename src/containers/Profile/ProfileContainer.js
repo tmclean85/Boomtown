@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Masonry from 'react-masonry-component';
 
 import ItemCardList from '../../components/ItemCardList';
 import Profile from './Profile';
@@ -19,12 +20,13 @@ class ProfileContainer extends Component {
     if (this.props.loading) return <Loader />;
     return (
       <div className="single-profile">
-        <div className="profile-card">
           <Profile usersData={this.props.usersData} itemsData={this.props.itemsData} />
-        </div>
-        <div className="profile-items">  
+            <Masonry
+    className={'itemCardListWrapper'}
+    elementType={'ul'}
+  >
           <ItemCardList itemsData={this.props.thisUsersItems} />
-        </div>
+          </Masonry>
       </div>
     );
   }

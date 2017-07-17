@@ -1,5 +1,6 @@
 .profile-page {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   width: 100vw;
   height: 100vh;
@@ -35,8 +36,33 @@
   justify-content: center;
 }
 
-.user-meta {
+.single-profile {
   display: flex;
-  width: 40%;
-  height: 80%;  
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+.profileCard {
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.profileName {
+  width: 50%;
+}
+
+.profile-image {
+  border-radius: 100%;
+  right: 0;
+}
+
+.itemCardListWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-info {
+  display: flex;
+  flex-flow: row nowrap;
 }

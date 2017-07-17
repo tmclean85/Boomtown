@@ -16,21 +16,13 @@ const hasShared = (usersData, itemsData) => {
 
 
 const Profile = ({ usersData, itemsData }) => (
-  <div className="profileCard">
-    <Card>
-      <div className="profileInfo">
+    <Card className="profileCard">
+  
         <CardTitle className="profileName" title={usersData.fullName} subtitle={usersData.bio} />
-        <div className="profileBorrowed">
-          <CardTitle title="Currently Borrowing:" />
-        </div>
-      </div>  
-      <div className="profileMeta">
         <CardTitle title={hasBorrowed(usersData, itemsData)} subtitle="Items borrowed" />
-        <CardTitle title={hasShared(usersData, itemsData)} subtitle="Items shared" />
-        <CardHeader className="profile-image" avatar={<Gravatar email={usersData.email} size={170} />} />
-      </div>
+        <CardTitle title={hasShared(usersData, itemsData)} subtitle="Items shared" />        
+        <Gravatar className="profile-image" email={usersData.email} size={120} />
     </Card>
-  </div>
 );
 
 
