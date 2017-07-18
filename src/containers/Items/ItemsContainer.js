@@ -22,7 +22,11 @@ class ItemsContainer extends Component {
     const { itemFilter } = this.props;
     const filteredItems = this.newFilteredList(itemFilter);
     if (this.props.loading) return <Loader />;
-    return <Items itemsData={filteredItems} />;
+    if (filteredItems.length) {
+      return <Items itemsData={filteredItems} />;
+    } else {
+      return <Items itemsData={this.props.itemsData} />;
+    }
   }
 }
 

@@ -5,16 +5,15 @@ import './styles.css';
 import ItemCard from '../../components/ItemCard';
 
 const ItemCardList = ({ itemsData }) => (
-  <Masonry
-    className={'itemCardListWrapper'}
-    elementType={'ul'}
-  >
+    <Masonry
+        className={'itemCardListWrapper'}
+        elementType={'ul'}
+    >
+        {itemsData.map(itemData => (
+            <ItemCard key={itemData.id} itemData={itemData} />
+      ))}
 
-    {itemsData.map(itemData => (
-      <ItemCard key={itemData.id} itemData={itemData} />
-    ))}
-
-  </Masonry>
+    </Masonry>
 );
 
 export default ItemCardList;

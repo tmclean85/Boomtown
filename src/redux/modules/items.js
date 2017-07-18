@@ -1,5 +1,5 @@
-export const LOAD_ITEMS_LIST = 'LOAD_ITEMS_LIST';
-export const ITEM_FILTER_SELECTION = 'ITEM_FILTER_SELECTION';
+const LOAD_ITEMS_LIST = 'LOAD_ITEMS_LIST';
+const ITEM_FILTER_SELECTION = 'ITEM_FILTER_SELECTION';
 
 // Action Creator
 export function loadItemsList(itemsWithOwners, thisUsersItems) {
@@ -28,14 +28,14 @@ export function CardRenderer(state = initialState, action) {
       itemsData: action.payload.itemsWithOwners,
       thisUsersItems: action.payload.thisUsersItems
     };
+  default:
+    return state;
   case ITEM_FILTER_SELECTION:
-    const filteredItems = {
+    const theFilter = {
       ...state,
       itemFilter: action.payload
     };
-    return filteredItems;
-  default:
-    return state;
+    return theFilter;
   }
 }
 
@@ -72,6 +72,3 @@ export function itemListFilter(itemFilter) {
     payload: itemFilter
   };
 }
-
-// TODO: Filter
-
