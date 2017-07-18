@@ -1,4 +1,5 @@
 export const LOAD_ITEMS_LIST = 'LOAD_ITEMS_LIST';
+export const ITEM_FILTER_SELECTION = 'ITEM_FILTER_SELECTION';
 
 // Action Creator
 export function loadItemsList(itemsWithOwners, thisUsersItems) {
@@ -16,6 +17,7 @@ const initialState = {
   loading: true,
   itemsData: [],
   thisUsersItems: [],
+  itemFilter: []
 };
 
 export function CardRenderer(state = initialState, action) {
@@ -28,6 +30,12 @@ export function CardRenderer(state = initialState, action) {
     };
   default:
     return state;
+  case ITEM_FILTER_SELECTION:
+    const theFilter = {
+      ...state,
+      itemFilter: action.payload
+    };
+    return theFilter;
   }
 }
 
@@ -55,6 +63,13 @@ export function fetchItemData(userId) {
       }
       dispatch(loadItemsList(itemsWithOwners, thisUsersItems));
     });
+  };
+}
+
+export function itemListFilter(itemFilter) {
+  return {
+    type: ITEM_FILTER_SELECTION,
+    payload: itemFilter
   };
 }
 

@@ -3,6 +3,7 @@ import moment from 'moment';
 import Gravatar from 'react-gravatar';
 
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Link } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import './styles.css';
 
@@ -14,13 +15,16 @@ const ItemCard = ({ itemData }) => (
       >
         <img src={itemData.imageUrl} alt={itemData.title} />
       </CardMedia>
+      <Link to={'/profile/'+itemData.itemOwner.id}>
       <div className="cardBox">
         <Gravatar email={itemData.itemOwner.email} />
         <CardHeader
           title={itemData.itemOwner.fullName}
           subtitle={moment.unix(itemData.createdOn).startOf('hours').fromNow()}
         />
+      
       </div>
+      </Link>  
   
       <CardTitle title={itemData.title} subtitle={itemData.tags} />
       <CardText>
