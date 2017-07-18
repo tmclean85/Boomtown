@@ -1,6 +1,6 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
-import { CardTitle, CardHeader, Card } from 'material-ui/Card';
+import { CardTitle, Card } from 'material-ui/Card';
 
 import './styles.css';
 

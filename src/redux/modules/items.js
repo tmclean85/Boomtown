@@ -28,14 +28,14 @@ export function CardRenderer(state = initialState, action) {
       itemsData: action.payload.itemsWithOwners,
       thisUsersItems: action.payload.thisUsersItems
     };
-  default:
-    return state;
   case ITEM_FILTER_SELECTION:
-    const theFilter = {
+    const filteredItems = {
       ...state,
       itemFilter: action.payload
     };
-    return theFilter;
+    return filteredItems;
+  default:
+    return state;
   }
 }
 

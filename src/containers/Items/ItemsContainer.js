@@ -10,19 +10,28 @@ class ItemsContainer extends Component {
     this.props.dispatch(fetchItemData());
   }
 
+  newFilteredList(itemFilter) {
+    const { itemsData } = this.props;
+    if (itemFilter) {
+      return itemsData.filter((itemData) => itemData.tags.find(tag => itemFilter.includes(tag)));
+    }
+    return itemsData;
+  }
+
   render() {
+    const { itemFilter } = this.props;
+    const filteredItems = this.newFilteredList(itemFilter);
     if (this.props.loading) return <Loader />;
-    return <Items itemsData={this.props.itemsData} />;
+    return <Items itemsData={filteredItems} />;
   }
 }
 
 function mapStateToProps(state) {
   return {
     loading: state.items.loading,
-    itemsData: state.items.itemsData
+    itemsData: state.items.itemsData,
+    itemFilter: state.items.itemFilter
   };
 }
-
-// TODO: Prop-type validation
 
 export default connect(mapStateToProps)(ItemsContainer);

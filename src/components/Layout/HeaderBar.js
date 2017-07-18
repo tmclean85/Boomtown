@@ -1,4 +1,4 @@
-
+import { connect } from 'react-redux';
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import FilterList from '../FilterList';
@@ -23,7 +23,11 @@ const HeaderBar = ({ dispatch, itemFilter }) => (
                 <a href="/">
                     <img className="AppbarLogo" src={logo} alt="Boombtown Logo" />
                 </a>
-                <FilterList />
+                <FilterList
+                  dispatch={dispatch}
+                  handleChange={itemListFilter}
+                  itemFilter={itemFilter}
+                />
             </div>
         }
     >
@@ -35,4 +39,10 @@ const HeaderBar = ({ dispatch, itemFilter }) => (
   </div>  
 );
 
-export default HeaderBar;
+function mapStateToProps(state) {
+  return {
+    itemFilter: state.items.itemFilter
+  };
+}
+
+export default connect(mapStateToProps)(HeaderBar);
