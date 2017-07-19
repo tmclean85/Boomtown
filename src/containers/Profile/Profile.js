@@ -1,6 +1,6 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
-import { CardTitle, Card } from 'material-ui/Card';
+import { CardTitle } from 'material-ui/Card';
 
 import './styles.css';
 
@@ -16,13 +16,14 @@ const hasShared = (usersData, itemsData) => {
 
 
 const Profile = ({ usersData, itemsData }) => (
-    <Card className="profileCard">
-  
-        <CardTitle className="profileName" title={usersData.fullName} subtitle={usersData.bio} />
-        <CardTitle title={hasBorrowed(usersData, itemsData)} subtitle="Items borrowed" />
-        <CardTitle title={hasShared(usersData, itemsData)} subtitle="Items shared" />        
+    <div className="profileCard">
+        <CardTitle titleStyle={{ fontSize: '2.5rem' }} title={usersData.fullName} subtitle={usersData.bio} />
+        <div className="profile-meta">
+          <CardTitle title={hasBorrowed(usersData, itemsData)} subtitle="Items borrowed" />
+          <CardTitle title={hasShared(usersData, itemsData)} subtitle="Items shared" />
+        </div>
         <Gravatar className="profile-image" email={usersData.email} size={120} />
-    </Card>
+    </div>
 );
 
 

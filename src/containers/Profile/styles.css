@@ -7,11 +7,12 @@
 }
 
 
-.user-box {
+.profileCard {
   display: flex;
   height: 15rem;
   flex-flow: row nowrap;
   width: 75%;
+  align-items: center;
   justify-content: space-around;
   background: #FFF;
   margin-top: 2.5rem;
@@ -37,15 +38,18 @@
 }
 
 .single-profile {
+  align-items: center;
   display: flex;
   flex-flow: column nowrap;
+  justify-content: center;
   width: 100%;
 }
 
 .profileCard {
-  height: auto;
+  height: 17rem;
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 2rem;
 }
 
 .profileName {
@@ -54,7 +58,13 @@
 
 .profile-image {
   border-radius: 100%;
-  right: 0;
+  height: 13rem;
+  width: auto;
+}
+
+.profile-image img {
+  height: 6rem;
+  width: auto;
 }
 
 .itemCardListWrapper {

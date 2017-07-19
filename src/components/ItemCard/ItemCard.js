@@ -7,11 +7,16 @@ import { Link } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import './styles.css';
 
+// const getBorrowerInfo = (usersData, itemsData) => {
+//   // const borrowed = itemsData.filter(item => usersData.id === item.itemHolder);
+//   // return borrowed.length;
+// };
+
 const ItemCard = ({ itemData }) => (
   <div className="itemCardWrapper">
     <Card>
       <CardMedia
-        overlay={<CardTitle subtitle={itemData.available} />}
+        overlay={<CardTitle title="" subtitle={itemData.available} />}
       >
         <img src={itemData.imageUrl} alt={itemData.title} />
       </CardMedia>
