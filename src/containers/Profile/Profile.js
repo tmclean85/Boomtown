@@ -5,7 +5,7 @@ import { CardTitle } from 'material-ui/Card';
 import './styles.css';
 
 const hasBorrowed = (usersData, itemsData) => {
-  const borrowed = itemsData.filter(item => usersData.id === item.itemHolder);
+  const borrowed = itemsData.filter(item => usersData.id === item.borrower);
   return borrowed.length;
 };
 

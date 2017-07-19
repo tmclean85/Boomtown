@@ -50,7 +50,7 @@ export function fetchItemData(userId) {
         const itemOwner = users.filter(user => user.id === item.itemOwner);
         item.itemOwner = itemOwner[0];
         if (item.itemHolder) {
-          const itemHolder = users.filter(user => user.id === item.itemHolder);
+          const itemHolder = users.filter(user => user.id === item.borrower);
           item.itemHolder = itemHolder[0];
         }
         return item;
