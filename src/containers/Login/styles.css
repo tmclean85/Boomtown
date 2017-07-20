@@ -54,7 +54,7 @@
 }
 
 .login .topRight {
-    animation: parallax-clouds 60s infinite alternate ease-in-out;
+    animation: parallax-clouds 35s infinite alternate ease-in-out;
     position: absolute;
     top: 0;
     right: 0;

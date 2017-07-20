@@ -23,11 +23,13 @@ const HeaderBar = ({ dispatch, itemFilter }) => (
                 <a href="/">
                     <img className="AppbarLogo" src={logo} alt="Boombtown Logo" />
                 </a>
+                {(window.location.pathname === '/') ?
                 <FilterList
                   dispatch={dispatch}
                   handleChange={itemListFilter}
                   itemFilter={itemFilter}
-                />
+                /> : null
+                }
             </div>
         }
     >
