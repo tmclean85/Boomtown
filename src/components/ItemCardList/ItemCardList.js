@@ -9,7 +9,7 @@ const ItemCardList = ({ itemsData }) => (
         className={'itemCardListWrapper'}
         elementType={'ul'}
     >
-        {itemsData.map(itemData => (
+        { itemsData && itemsData.map(itemData => (
             <ItemCard key={itemData.id} itemData={itemData} />
       ))}
 

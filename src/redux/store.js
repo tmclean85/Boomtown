@@ -1,8 +1,9 @@
 import logger from 'redux-logger';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import reducers from './combine-reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { applyMiddleware, createStore } from 'redux';
+import client from '../config/apolloClient';
+import reducers from './combine-reducers';
 
 export default createStore(
   reducers,
@@ -10,6 +11,6 @@ export default createStore(
     applyMiddleware(
       logger,
       thunk,
+      client.middleware(),
     )));
 
-  //TODO: Filter

@@ -25,9 +25,9 @@ const HeaderBar = ({ dispatch, itemFilter }) => (
                 </a>
                 {(window.location.pathname === '/') ?
                 <FilterList
-                  dispatch={dispatch}
-                  handleChange={itemListFilter}
-                  itemFilter={itemFilter}
+                    dispatch={dispatch}
+                    handleChange={itemListFilter}
+                    itemFilter={itemFilter}
                 /> : null
                 }
             </div>
