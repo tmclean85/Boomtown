@@ -35,7 +35,7 @@ class ItemsContainer extends Component {
 
   newFilteredList(itemFilter) {
     const itemsData = this.props.data.items || [];
-    if (itemFilter && itemsData ) {
+    if (itemFilter && itemsData) {
       return itemsData.filter((itemData) => itemData.tags.find(tag => itemFilter.includes(tag)));
     }
     return itemsData;

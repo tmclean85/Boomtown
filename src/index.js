@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { ApolloProvider } from 'react-apollo';
-
+import * as firebase from 'firebase';
+import 'firebase/auth';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
@@ -15,8 +16,32 @@ import muiTheme from './config/theme';
 import store from './redux/store';
 import Layout from './components/Layout';
 import Routes from './routes';
+import {
+  updateAuthState
+} from './redux/modules/login';
+import {
+  FirebaseAuth
+} from './config/firebase';
 
 injectTapEventPlugin();
+
+FirebaseAuth.onAuthStateChanged(function(user) {
+  if (user) {
+    store.dispatch(updateAuthState(user.uid));
+    // User is signed in.
+    // const displayName = user.displayName;
+    // const email = user.email;
+    // const emailVerified = user.emailVerified;
+    // const photoURL = user.photoURL;
+    // const isAnonymous = user.isAnonymous;
+    // const uid = user.uid;
+    // const providerData = user.providerData;
+  } else {
+    store.dispatch(updateAuthState(false));
+    // User is signed out.
+    // ...
+  }
+});
 
 const Boomtown = () => (
 

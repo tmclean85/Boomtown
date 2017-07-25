@@ -12,11 +12,11 @@ import Loader from '../../components/Loader';
 const fetchUsers = gql`
   query fetchUsers($id: ID!) {
     user(id: $id) {
+      id
       fullName
       bio
       email
       borrowed {
-        id
         title
         itemOwner {
           fullName
@@ -31,6 +31,7 @@ const fetchUsers = gql`
         }
         imageUrl
         borrower {
+          id
           fullName
         }
         createdOn
@@ -64,7 +65,33 @@ class ProfileContainer extends Component {
 }
 
 ProfileContainer.propTypes = {
-  loading: PropTypes.bool.isRequired
+  data: PropTypes.shape({
+    fullName: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    borrowed: PropTypes.shape({ 
+      title: PropTypes.string.isRequired,
+      itemOwner: PropTypes.shape({ 
+        fullName: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+    items: PropTypes.shape({
+      title: PropTypes.shape({
+        itemOwner: PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          fullName: PropTypes.string.isRequired,
+          email: PropTypes.string.isRequired,
+        }).isRequired,
+        imageUrl: PropTypes.string.isRequired,
+        borrower: PropTypes.shape({
+          fullName: PropTypes.string.isRequired,
+        }),
+        createdOn: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+      })
+    })
+  }).isRequired,
 };
 
 function mapStateToProps(state) {

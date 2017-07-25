@@ -2,10 +2,10 @@ export const LOAD_PROFILES = 'LOAD_PROFILES';
 
 // Action creator
 
-export function loadProfile(usersData) {
+export function loadProfile(userProfile) {
   return {
     type: LOAD_PROFILES,
-    payload: usersData
+    payload: userProfile
   };
 }
 
