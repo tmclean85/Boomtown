@@ -15,10 +15,8 @@ class LoginContainer extends Component {
     .catch((err) => {
       if (err.code === 'auth/user-not-found') {
         console.log('User not found');
-        // this.props.dispatch(showJoinModal(true));
       } else {
         console.log('Successful login!');
-        // this.props.dispatch(showLoginError(true));
       }
     });
   }
@@ -52,7 +50,7 @@ class LoginContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.usersData
+    authenticated: state.auth.userProfile
   };
 }
 

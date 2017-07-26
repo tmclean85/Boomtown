@@ -16,12 +16,6 @@ const fetchUsers = gql`
       fullName
       bio
       email
-      borrowed {
-        title
-        itemOwner {
-          fullName
-        }
-      }
       items {
         title
         itemOwner {
@@ -32,34 +26,36 @@ const fetchUsers = gql`
         imageUrl
         borrower {
           id
-          fullName
         }
         createdOn
         description
         tags
       }
+        borrowed {
+        id
+        title
+        itemOwner {
+          fullName
+        }
+      }
     }
   }
 `;
-class ProfileContainer extends Component {
 
-  // componentDidMount() {
-  //   this.props.dispatch(fetchItemData(this.props.match.params.id));
-  //   this.props.dispatch(getProfileData(this.props.match.params.id));
-  // }
+class ProfileContainer extends Component {
 
   render() {
     if (this.props.data.loading) return <Loader />;
     return (
-      <div className="single-profile">
-          <Profile usersData={this.props.data.users} itemsData={this.props.data.items} />
+        <div className="single-profile">
+            <Profile usersData={this.props.data.user} />
             <Masonry
                 className={'itemCardListWrapper'}
                 elementType={'ul'}
             >
-                <ItemCardList itemsData={this.props.data.items} />
+                <ItemCardList itemsData={this.props.data.user.items} />
             </Masonry>
-      </div>
+        </div>
     );
   }
 }
@@ -69,9 +65,9 @@ ProfileContainer.propTypes = {
     fullName: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    borrowed: PropTypes.shape({ 
+    borrowed: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      itemOwner: PropTypes.shape({ 
+      itemOwner: PropTypes.shape({
         fullName: PropTypes.string.isRequired,
       }).isRequired,
     }),
@@ -101,6 +97,12 @@ function mapStateToProps(state) {
     itemsData: state.items.itemsData,
   };
 }
-
-const userListWithData = graphql(fetchUsers)(ProfileContainer);
+const userListWithData = graphql(fetchUsers, {
+  options: ownProps => ({
+    variables: {
+      id: ownProps.match.params.id
+    }
+  })
+})(ProfileContainer);
+// const userListWithData = graphql(fetchUsers)(ProfileContainer);
 export default connect(mapStateToProps)(userListWithData);

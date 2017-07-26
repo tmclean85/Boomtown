@@ -28,18 +28,8 @@ injectTapEventPlugin();
 FirebaseAuth.onAuthStateChanged(function(user) {
   if (user) {
     store.dispatch(updateAuthState(user.uid));
-    // User is signed in.
-    // const displayName = user.displayName;
-    // const email = user.email;
-    // const emailVerified = user.emailVerified;
-    // const photoURL = user.photoURL;
-    // const isAnonymous = user.isAnonymous;
-    // const uid = user.uid;
-    // const providerData = user.providerData;
   } else {
     store.dispatch(updateAuthState(false));
-    // User is signed out.
-    // ...
   }
 });
 

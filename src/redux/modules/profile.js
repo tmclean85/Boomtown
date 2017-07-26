@@ -13,7 +13,7 @@ export function loadProfile(userProfile) {
 
 const initialState = {
   loading: true,
-  usersData: {}
+  usersData: []
 };
 
 export function ProfileLoader(state = initialState, action) {
