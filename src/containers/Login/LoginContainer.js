@@ -32,7 +32,7 @@ class LoginContainer extends Component {
 //   }
 
   render() {
-    this.login({ email: 'trevor@trevor.com', password:'password' });
+    // this.login({ email: 'trevor@trevor.com', password:'password' });
     const { authenticated, loginFormValues, ...props } = this.props;
     if (authenticated) {
       return (

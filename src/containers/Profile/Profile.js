@@ -7,7 +7,7 @@ import './styles.css';
 
 const Profile = ({ usersData }) => (
     <div className="profileCard">
-        <CardTitle titleStyle={{ fontSize: '2.5rem' }} title={usersData.fullName} subtitle={usersData.bio} />
+        <CardTitle titleStyle={{ fontSize: '2.5rem' }} title={usersData.fullname} subtitle={usersData.bio} />
         <div className="profile-meta">
              <CardTitle subtitle="Items borrowed" />
           <CardTitle title={usersData.items.length} subtitle="Items shared" />

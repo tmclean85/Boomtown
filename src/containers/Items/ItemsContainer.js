@@ -17,17 +17,14 @@ const fetchItems = gql`
       imageUrl
       tags
       itemOwner {
-        id
-        email
-        fullName
-        bio
+        fullname
       }
       createdOn
       available
       borrower {
         id
       }
-    } 
+    }
   }
 `;
 
@@ -73,7 +70,7 @@ ItemsContainer.propTypes = {
       itemOwner: PropTypes.shape({
         id: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
-        fullName: PropTypes.string.isRequired,
+        fullname: PropTypes.string.isRequired,
         bio: PropTypes.string.isRequired,
       }).isRequired,
       createdOn: PropTypes.number.isRequired,

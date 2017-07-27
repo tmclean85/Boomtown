@@ -1,0 +1,52 @@
+.signUpCard {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 30rem;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+  text-align: left;
+  width: 25rem;
+}
+
+.signUpCard h2 {
+  font-size: 1.5rem;
+}
+
+.textField {
+  min-width: 100%;
+}
+
+.buttonBox {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  min-width: 100%;
+}
+
+.signUpPage .bottomLeft {
+    bottom: 0;
+    left: 0;
+    margin-bottom: -10px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.signUpPage .topRight {
+    animation: parallax-clouds 35s infinite alternate ease-in-out;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@keyframes parallax-clouds {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+    50% {
+        transform: translate3d(50px, 0px, 0px);
+    }
+    100% {
+        transform: translate3d(-50px, 0px, 0px);
+    }
+}

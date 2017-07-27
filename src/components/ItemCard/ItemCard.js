@@ -24,7 +24,7 @@ const ItemCard = ({ itemData }) => (
       <div className="cardBox">
         <Gravatar email={itemData.itemOwner.email} />
         <CardHeader
-          title={itemData.itemOwner.fullName}
+          title={itemData.itemOwner.fullname}
           subtitle={moment.unix(itemData.createdOn).startOf('hours').fromNow()}
         />
       

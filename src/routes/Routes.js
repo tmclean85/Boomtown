@@ -5,6 +5,7 @@ import Items from '../containers/Items';
 import Profile from '../containers/Profile';
 import Share from '../containers/Share';
 import NotFound from '../containers/NotFound';
+import SignUp from '../containers/SignUp';
 
 import {
   BrowserRouter as Router,
@@ -19,6 +20,7 @@ const Routes = () => (
       <Route exact path="/" component={Items} />
       <Route path="/profile/:id" component={Profile} />
       <Route path="/share" component={Share} />
+      <Route path="/signup" component={SignUp} />
       <Route component={NotFound} />
     </Switch>    
   </Router>
