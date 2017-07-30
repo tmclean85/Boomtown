@@ -9,36 +9,30 @@ import Loader from '../../components/Loader';
 
 
 const fetchUsers = gql`
-  query fetchUsers($id: ID!) {
+   query fetchUsers($id: ID!) {
     user(id: $id) {
       id
+      email
       fullname
       bio
-      email
       items {
-        title
-        itemowner {
-          id
-          fullname
-          email
-        }
-        imageurl
-        borrower {
-          id
-        }
-        createdon
-        description
-        tags {
-          title
-        }
-      }
-        borrowed {
         id
-        title
-        itemowner {
+        imageurl
+        itemowner{
+          email
           fullname
+          id
+          }
+        title
+        createdon
+        tags {
+            title
         }
+        description
       }
+    borrowed {
+      title
+    }
     }
   }
 `;
