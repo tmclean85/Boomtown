@@ -18,20 +18,20 @@ const ItemCard = ({ itemData }) => (
       <CardMedia
         overlay={<CardTitle title="" subtitle={itemData.available} />}
       >
-        <img src={itemData.imageUrl} alt={itemData.title} />
+        <img src={itemData.imageurl} alt={itemData.title} />
       </CardMedia>
-      <Link to={'/profile/'+itemData.itemOwner.id}>
+      <Link to={'/profile/' + itemData.itemowner.id}>
       <div className="cardBox">
-        <Gravatar email={itemData.itemOwner.email} />
+        <Gravatar email={itemData.itemowner.email} />
         <CardHeader
-          title={itemData.itemOwner.fullname}
-          subtitle={moment.unix(itemData.createdOn).startOf('hours').fromNow()}
+          title={itemData.itemowner.fullname}
+          subtitle={(moment(itemData.createdon, 'YYYYMMDD')).fromNow()}
         />
       
       </div>
-      </Link>  
+      </Link>
   
-      <CardTitle title={itemData.title} subtitle={itemData.tags} />
+      <CardTitle title={itemData.title} subtitle={(itemData.tags.map(tag => tag.title).join(', '))} />
       <CardText>
         <p>{itemData.description}</p>
       </CardText>
@@ -39,7 +39,7 @@ const ItemCard = ({ itemData }) => (
         <FlatButton label="Borrow" />
       </CardActions>
     </Card>
-  </div>  
+  </div>
 );
 
 export default ItemCard;

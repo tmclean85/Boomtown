@@ -7,7 +7,7 @@ export const showLoginError = show => ({ type: SHOW_LOGIN_ERROR, payload: show }
 
 // Reducer
 
-export default (state = {
+export const authReducer = (state = {
   userLogin: false,
   showLoginError: false
 }, action) => {

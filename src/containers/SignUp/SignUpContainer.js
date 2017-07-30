@@ -29,25 +29,26 @@ class SignUpContainer extends Component {
 // TODO: firebase.auth like profilecontainer
   login = ({ email, password }) => {
     FirebaseAuth.signInWithEmailAndPassword(email, password).catch(function (error) {
-      console.log(error)
+      console.log(error);
     });
   }
 
   singleUser = (event) => {
     event.preventDefault();
     this.props.mutate({
-      variables: { 
+      variables: {
         fullname: 'tmclean',
         email: 'trevor@mclean.com',
         bio: 'server-side operations are clearly not my forte',
         password: 'password' }
     }).then(({ data }) => {
         this.login({ email: 'trevor@mclean.com', password: 'password' });
+        console.log(data, 'Heres data');
     }).catch((error) => {
       console.log('Unsuccesful query, friend.', error);
     });
   };
-  
+
   render() {
     return (
         <SignUp singleUser={(event) => this.singleUser(event)} />

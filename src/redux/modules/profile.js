@@ -2,10 +2,10 @@ export const LOAD_PROFILES = 'LOAD_PROFILES';
 
 // Action creator
 
-export function loadProfile(userProfile) {
+export function loadProfile(userData) {
   return {
     type: LOAD_PROFILES,
-    payload: userProfile
+    payload: userData
   };
 }
 
@@ -34,8 +34,8 @@ export function getProfileData(userId) {
   return function (dispatch) {
     fetch(`http://localhost:3001/users/${userId}`)
     .then(response => response.json())
-    .then(usersData => {
-      dispatch(loadProfile(usersData));
+    .then(userData => {
+      dispatch(loadProfile(userData));
     });
   };
 }

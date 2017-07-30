@@ -7,78 +7,72 @@ import { connect } from 'react-redux';
 import Items from './Items';
 import Loader from '../../components/Loader';
 
-
-const fetchItems = gql`
-  query fetchItems {
-    items {
-      id
-      title
-      description
-      imageUrl
-      tags
-      itemOwner {
-        fullname
-      }
-      createdOn
-      available
-      borrower {
-        id
-      }
-    }
-  }
-`;
-
 class ItemsContainer extends Component {
 
-  newFilteredList(itemFilter) {
-    const itemsData = this.props.data.items || [];
-    if (itemFilter && itemsData) {
-      return itemsData.filter((itemData) => itemData.tags.find(tag => itemFilter.includes(tag)));
+  newFilteredList(itemsData) {
+    const itemFilter = this.props.itemFilter;
+    if (itemFilter.length) {
+      return itemsData.filter(item => item.tags.find(tag => itemFilter.includes(tag)));
     }
     return itemsData;
   }
 
   render() {
-    if (this.props.data.loading) return <Loader />;
-
-    const { itemFilter } = this.props;
-    const filteredItems = this.newFilteredList(itemFilter);
-    if (filteredItems.length) {
-      return <Items itemsData={filteredItems} />;
-    } else {
-      return <Items itemsData={this.props.data.items} />;
-    }
+    const { data: { loading, items } } = this.props;
+    if (loading) return <Loader />;
+    const filteredItems = this.newFilteredList(items);
+    return <Items itemsData={filteredItems} />;
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    itemFilter: state.items.itemFilter,
-  };
-}
-
 ItemsContainer.propTypes = {
-  itemFilter: PropTypes.arrayOf(PropTypes.string).isRequired,
   data: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
+      available: PropTypes.bool.isRequired,
+      imageurl: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-      itemOwner: PropTypes.shape({
+      itemowner: PropTypes.shape({
         id: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         fullname: PropTypes.string.isRequired,
-        bio: PropTypes.string.isRequired,
       }).isRequired,
-      createdOn: PropTypes.number.isRequired,
-      available: PropTypes.bool.isRequired,
+      createdon: PropTypes.string.isRequired,
       borrower: PropTypes.objectOf(PropTypes.string),
     }))
   }).isRequired,
 };
+
+const fetchItems = gql`
+    query fetchItems {
+        items{
+            id
+            title
+            description
+            imageurl
+            tags{
+                id
+                title
+            }
+            itemowner{
+                id
+                email
+                fullname
+                bio
+            }
+        }
+        }
+`;
+
+function mapStateToProps(state) {
+  return {
+    itemFilter: state.items.itemFilter
+  };
+}
+
 
 const itemListWithData = graphql(fetchItems)(ItemsContainer);
 export default connect(mapStateToProps)(itemListWithData);

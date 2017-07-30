@@ -18,7 +18,7 @@ const SignUp = ({ singleUser }) => (
     </div>
     <form onSubmit={singleUser} >
       <Paper className="signUpCard">
-          <h2>No Account With this Email.</h2>
+          <h1>No Account With this Email.</h1>
           <p>The email you provided is not registered. Would you like to use it to join and start sharing with everyone?</p>
           <TextField
               className="textField"
@@ -36,7 +36,6 @@ const SignUp = ({ singleUser }) => (
             <RaisedButton
                 className="noThanksButton"
                 label="NO THANKS"
-                type="submit"
             />
             <RaisedButton
                 className="joinButton"

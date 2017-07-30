@@ -33,16 +33,25 @@ class LoginContainer extends Component {
 
   render() {
     // this.login({ email: 'trevor@trevor.com', password:'password' });
-    const { authenticated, loginFormValues, ...props } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { authenticated, ...props } = this.props;
     if (authenticated) {
       return (
-          <Redirect to="/" />
+          <Redirect to={from} />
       );
     }
     return (
         <Login
             {...props}
-            login={this.login}
+            join={this.join}
+            reset={this.reset}
+            login={(e) => {
+              e.preventDefault();
+              this.login({
+                email: 'trevor@trevor.com',
+                password: 'password'
+              });
+            }}
         />
     );
   }
@@ -50,7 +59,9 @@ class LoginContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.userProfile
+    authenticated: state.auth.userProfile,
+    // loginFormValues: getFormValues('LoginForm')(state),
+    
   };
 }
 

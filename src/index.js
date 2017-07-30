@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { ApolloProvider } from 'react-apollo';
-import * as firebase from 'firebase';
 import 'firebase/auth';
 import {
   BrowserRouter as Router,
@@ -35,15 +34,15 @@ FirebaseAuth.onAuthStateChanged(function(user) {
 
 const Boomtown = () => (
 
-  <MuiThemeProvider muiTheme={muiTheme}>
-    <ApolloProvider client={client} store={store}>
-      <Router>
-        <Layout>
-          <Routes />
-        </Layout>
-      </Router>
-    </ApolloProvider>
-  </MuiThemeProvider>
+    <MuiThemeProvider muiTheme={muiTheme}>
+        <ApolloProvider client={client} store={store}>
+            <Router>
+                <Layout>
+                    <Routes />
+                </Layout>
+            </Router>
+        </ApolloProvider>
+    </MuiThemeProvider>
 
 
 );
