@@ -54,8 +54,8 @@ class LoginContainer extends Component {
             login={(e) => {
               e.preventDefault();
               this.login({
-                email: `${this.props.values.values.email}`,
-                password: `${this.props.values.values.password}`
+                email: 'trevor@trevor.com',
+                password: 'password'
               });
             }}
         />
@@ -66,8 +66,6 @@ class LoginContainer extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.userProfile,
-    values: state.form.login,
-    signIn: state.auth.knownUser
     // loginFormValues: getFormValues('LoginForm')(state),
     
   };
