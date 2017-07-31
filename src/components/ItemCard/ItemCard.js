@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import Gravatar from 'react-gravatar';
 
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
@@ -12,34 +11,42 @@ import './styles.css';
 //   // return borrowed.length;
 // };
 
+const moment = require('moment');
+
+moment().format();
+
 const ItemCard = ({ itemData }) => (
-  <div className="itemCardWrapper">
-    <Card>
-      <CardMedia
-        overlay={<CardTitle title="" subtitle={itemData.available} />}
-      >
-        <img src={itemData.imageurl} alt={itemData.title} />
-      </CardMedia>
-      <Link to={'/profile/' + itemData.itemowner.id}>
-      <div className="cardBox">
-        <Gravatar email={itemData.itemowner.email} />
-        <CardHeader
-          title={itemData.itemowner.fullname}
-          subtitle={(moment(itemData.createdon, 'YYYYMMDD')).fromNow()}
-        />
-      
-      </div>
-      </Link>
-  
-      <CardTitle title={itemData.title} subtitle={(itemData.tags.map(tag => tag.title).join(', '))} />
-      <CardText>
-        <p>{itemData.description}</p>
-      </CardText>
-      <CardActions>
-        <FlatButton label="Borrow" />
-      </CardActions>
-    </Card>
-  </div>
+    <div className="itemCardWrapper">
+        <Card>
+            {itemData.borrower === null ? (
+                <CardMedia>
+                    <img src={itemData.imageurl} alt={itemData.title} />
+                </CardMedia>
+            ) : (
+                <CardMedia
+                    overlay={<CardTitle subtitle="UNAVAILABLE" />}
+                >
+                    <img src={itemData.imageurl} alt={itemData.title} />
+                </CardMedia>
+            )}
+            <Link to={'/profile/' + itemData.itemowner.id}>
+                <div className="cardBox">
+                    <Gravatar email={itemData.itemowner.email} />
+                    <CardHeader
+                      title={itemData.itemowner.fullname}
+                      subtitle={(moment(itemData.createdon, 'YYYYMMDD')).fromNow()}
+                    />
+                </div>
+            </Link>
+            <CardTitle title={itemData.title} subtitle={(itemData.tags.map(tag => tag.title).join(', '))} />
+            <CardText>
+                <p>{itemData.description}</p>
+            </CardText>
+            <CardActions>
+                <FlatButton label="Borrow" />
+            </CardActions>
+        </Card>
+    </div>
 );
 
 export default ItemCard;

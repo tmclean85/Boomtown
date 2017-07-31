@@ -9,8 +9,6 @@ import Loader from '../../components/Loader';
 
 class ItemsContainer extends Component {
 
-
-
   newFilteredList(itemsData) {
     const itemFilter = this.props.itemFilter;
     if (itemFilter.length) {
@@ -56,6 +54,7 @@ const fetchItems = gql`
             id
             title
             description
+            available
             imageurl
             tags{
                 id
