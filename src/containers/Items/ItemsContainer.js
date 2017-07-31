@@ -9,10 +9,14 @@ import Loader from '../../components/Loader';
 
 class ItemsContainer extends Component {
 
+
+
   newFilteredList(itemsData) {
     const itemFilter = this.props.itemFilter;
     if (itemFilter.length) {
-      return itemsData.filter(item => item.tags.find(tag => itemFilter.includes(tag)));
+      return itemsData.filter(item => item.tags.map(tag => tag.title).find(
+        tag => itemFilter.includes(tag)
+      ));
     }
     return itemsData;
   }
