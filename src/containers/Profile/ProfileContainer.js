@@ -52,35 +52,37 @@ class ProfileContainer extends Component {
 
 ProfileContainer.propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    fullname: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    borrowed: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      itemowner: PropTypes.shape({
-        fullname: PropTypes.string.isRequired,
-      }).isRequired,
-    }),
-    items: PropTypes.shape({
-      title: PropTypes.shape({
+    user: PropTypes.objectOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      fullname: PropTypes.string.isRequired,
+      bio: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      borrowed: PropTypes.shape({
+        title: PropTypes.string.isRequired,
         itemowner: PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          email: PropTypes.string.isRequired,
           fullname: PropTypes.string.isRequired,
         }).isRequired,
-        imageurl: PropTypes.string.isRequired,
-        borrower: PropTypes.shape({
-          fullname: PropTypes.string.isRequired,
-        }),
-        createdon: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        tags: PropTypes.arrayOf(PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          title: PropTypes.string.isRequired,
-        })).isRequired,
+      }),
+      items: PropTypes.shape({
+        title: PropTypes.shape({
+          itemowner: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            email: PropTypes.string.isRequired,
+            fullname: PropTypes.string.isRequired,
+          }).isRequired,
+          imageurl: PropTypes.string.isRequired,
+          borrower: PropTypes.shape({
+            fullname: PropTypes.string.isRequired,
+          }),
+          createdon: PropTypes.number.isRequired,
+          description: PropTypes.string.isRequired,
+          tags: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+          })).isRequired,
+        })
       })
-    })
+    })).isRequired,
   }).isRequired,
 };
 

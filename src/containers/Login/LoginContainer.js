@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './Login';
 import { FirebaseAuth } from '../../config/firebase';
+import { showLoginError, sendToRegister } from '../../redux/modules/login';
 // import { FirebaseAuth, FirebaseDB } from '../../config/firebase';
 
 class LoginContainer extends Component {
@@ -14,9 +15,9 @@ class LoginContainer extends Component {
     FirebaseAuth.signInWithEmailAndPassword(email, password)
     .catch((err) => {
       if (err.code === 'auth/user-not-found') {
-        console.log('User not found');
+        this.props.dispatch(sendToRegister(true));
       } else {
-        console.log('Successful login!');
+        this.props.dispatch(showLoginError(true));
       }
     });
   }
@@ -34,22 +35,27 @@ class LoginContainer extends Component {
   render() {
     // this.login({ email: 'trevor@trevor.com', password:'password' });
     const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { authenticated, ...props } = this.props;
+    const { authenticated, formData, signIn, ...props } = this.props;
     if (authenticated) {
       return (
           <Redirect to={from} />
       );
     }
+
+    if (signIn) {
+      return (
+          <Redirect to="/signup" />
+      );
+    }
+
     return (
         <Login
             {...props}
-            join={this.join}
-            reset={this.reset}
             login={(e) => {
               e.preventDefault();
               this.login({
-                email: 'trevor@trevor.com',
-                password: 'password'
+                email: `${this.props.values.values.email}`,
+                password: `${this.props.values.values.password}`
               });
             }}
         />
@@ -60,6 +66,8 @@ class LoginContainer extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.userProfile,
+    values: state.form.login,
+    signIn: state.auth.knownUser
     // loginFormValues: getFormValues('LoginForm')(state),
     
   };
