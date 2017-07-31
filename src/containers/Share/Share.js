@@ -43,16 +43,16 @@ const selectField = ({
   ...custom
 }) => (
     <SelectField
-      errorText={touched && error}
-      floatingLabelText={label}
-      children={children}
-      onChange={(
-        event,
-        index,
-        value
-      ) => input.onChange(value)}
-      {...input}
-      {...custom}
+        errorText={touched && error}
+        floatingLabelText={label}
+        children={children}
+        onChange={(
+          event,
+          index,
+          value
+        ) => input.onChange(value)}
+        {...input}
+        {...custom}
     />
 );
 

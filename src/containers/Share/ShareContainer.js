@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 import { FirebaseAuth, FirebaseStorage } from '../../config/firebase';
 import Share from './Share';
 
@@ -18,6 +21,8 @@ class ShareContainer extends Component {
       .put(this.fileInput.files[0])
       .then(result => {
         console.log(result);
+      }).catch((e) => {
+        console.log(e);
       });
   }
 
@@ -28,13 +33,39 @@ class ShareContainer extends Component {
 
   render() {
     return (
-        <Share
-            selectImage={this.selectImage}
-            handleImageUpload={this.handleImageUpload}
-            handleSubmit={this.handleSubmit}
-        />
+        <Share />
     );
   }
 }
+
+const addItem = gql`
+    mutation addItem(
+        $title: String!
+        $imageurl: String
+        $itemowner: ID!              
+        $description: String!
+        $tags: [AssignedTag]!
+    ) {
+        addItem(
+        title: $title
+        imageurl: $imageurl
+        itemowner: $itemowner          
+        description: $description
+        tags: $tags
+    ) {
+        title
+        imageurl
+        description
+        itemowner{
+            id
+        }
+        tags
+            {
+            title
+            }
+        }
+    }
+`;
+
 
 export default ShareContainer;
